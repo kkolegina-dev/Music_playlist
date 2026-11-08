@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Музыка и настроение — четыре плейлиста</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --slate-deep:#2b3a4a;
+    --slate:#3d5064;
+    --slate-light:#8a9bab;
+    --gold:#b8944a;
+    --gold-light:#d9c48a;
+    --bg:#f5f7f8;
+    --card:#ffffff;
+    --text:#33404c;
+    --text-soft:#5f6f7d;
+    --line:#dfe5ea;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.75;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .container{
+    max-width:860px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- ШАПКА ---------- */
+  header{
+    background:linear-gradient(160deg, #2b3a4a 0%, #3d5064 100%);
+    color:#eef2f5;
+    padding:88px 0 76px;
+    position:relative;
+    overflow:hidden;
+  }
+
+  header::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:3px;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    opacity:.7;
+  }
+
+  header .container{position:relative; z-index:2;}
+
+  .eyebrow{
+    font-size:.72rem;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+    font-weight:400;
+    margin-bottom:22px;
+  }
+
+  h1{
+    font-family:'Cormorant Garamond', Georgia, serif;
+    font-weight:600;
+    font-size:clamp(2.1rem, 5.5vw, 3.4rem);
+    line-height:1.2;
+    letter-spacing:.01em;
+    margin-bottom:20px;
+  }
+
+  header p{
+    max-width:620px;
+    color:#c3cdd6;
+    font-size:1.02rem;
+    font-weight:300;
+  }
+
+  /* ---------- ОСНОВНОЙ КОНТЕНТ ---------- */
+  main{padding:80px 0 40px;}
+
+  section{margin-bottom:72px;}
+
+  h2{
+    font-family:'Cormorant Garamond', Georgia, serif;
+    font-weight:600;
+    font-size:1.85rem;
+    color:var(--slate-deep);
+    margin-bottom:14px;
+    letter-spacing:.01em;
+  }
+
+  .rule{
+    width:56px;
+    height:2px;
+    background:var(--gold);
+    margin-bottom:30px;
+    opacity:.85;
+  }
+
+  p{margin-bottom:16px;color:var(--text-soft);font-size:1rem;}
+
+  p strong{color:var(--slate-deep);font-weight:500;}
+
+  /* ---------- ФАКТЫ ---------- */
+  .facts{
+    list-style:none;
+    border-left:2px solid var(--line);
+    padding-left:28px;
+  }
+
+  .facts li{
+    position:relative;
+    padding:14px 0;
+    color:var(--text-soft);
+    font-size:.98rem;
+    border-bottom:1px solid var(--line);
+  }
+
+  .facts li:last-child{border-bottom:none;}
+
+  .facts li::before{
+    content:"";
+    position:absolute;
+    left:-34px;
+    top:24px;
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:var(--gold);
+    opacity:.75;
+  }
+
+  .facts li b{
+    color:var(--slate-deep);
+    font-weight:500;
+  }
+
+  /* ---------- ПЛЕЙЛИСТЫ ---------- */
+  .playlists{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:22px;
+    margin-top:8px;
+  }
+
+  .playlist{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-top:2px solid var(--gold);
+    border-radius:6px;
+    padding:26px 26px 20px;
+    box-shadow:0 1px 3px rgba(43,58,74,.05);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+
+  .playlist:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 22px rgba(43,58,74,.09);
+  }
+
+  .playlist h3{
+    font-family:'Cormorant Garamond', Georgia, serif;
+    font-size:1.22rem;
+    font-weight:600;
+    color:var(--slate-deep);
+    margin-bottom:6px;
+    letter-spacing:.01em;
+  }
+
+  .playlist .mood{
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--slate-light);
+    margin-bottom:16px;
+  }
+
+  .playlist .desc{
+    font-size:.9rem;
+    color:var(--text-soft);
+    margin-bottom:18px;
+    line-height:1.55;
+    font-style:italic;
+  }
+
+  .playlist ul{list-style:none;}
+
+  .playlist li{
+    font-size:.92rem;
+    color:var(--text-soft);
+    padding:6px 0;
+    border-bottom:1px dashed rgba(223,229,234,.9);
+  }
+
+  .playlist li:last-child{border-bottom:none;}
+
+  .playlist li span{
+    display:block;
+    font-size:.8rem;
+    color:var(--slate-light);
+    letter-spacing:.02em;
+  }
+
+  /* ---------- ПОДВАЛ ---------- */
+  footer{
+    background:var(--slate-deep);
+    color:#c3cdd6;
+    padding:48px 0;
+    margin-top:60px;
+    border-top:3px solid var(--gold);
+  }
+
+  footer .author{
+    font-family:'Cormorant Garamond', Georgia, serif;
+    font-size:1.28rem;
+    color:#f0f3f6;
+    letter-spacing:.02em;
+    margin-bottom:6px;
+  }
+
+  footer .meta{
+    font-size:.85rem;
+    color:var(--slate-light);
+    letter-spacing:.05em;
+  }
+
+  @media (max-width:600px){
+    header{padding:64px 0 56px;}
+    main{padding:56px 0 20px;}
+    section{margin-bottom:56px;}
+    .container{padding:0 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="eyebrow">Плейлисты &amp; настроение</div>
+    <h1>Музыка, которая<br>меняет состояние</h1>
+    <p>Музыка способна влиять на настроение и общее состояние человека: она может успокаивать, бодрить, создавать атмосферу и помогать переключиться. Ниже — несколько фактов по теме и четыре плейлиста под разные ситуации.</p>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+
+    <!-- ФАКТЫ -->
+    <section>
+      <h2>Несколько интересных фактов</h2>
+      <div class="rule"></div>
+      <ul class="facts">
+        <li><b>Мурашки — это дофамин.</b> Около половины людей испытывают озноб от музыки. Исследования показывают, что в этот момент активность системы вознаграждения резко возрастает.</li>
+        <li><b>Музыка снижает уровень кортизола.</b> Спокойные композиции помогают уменьшить гормон стресса и субъективное ощущение тревоги.</li>
+        <li><b>Мозг предсказывает ноты.</b> Удовольствие возникает там, где ожидание слегка нарушается — именно поэтому простые, предсказуемые мелодии быстро «приедаются».</li>
+        <li><b>Музыкальная память живёт дольше.</b> Люди с болезнью Альцгеймера часто узнают песни юности, даже когда другие воспоминания уже утрачены.</li>
+        <li><b>Текст мешает работе.</b> При задачах, связанных с чтением и письмом, вокал конкурирует за ресурсы мозга — инструментальная музыка в этом случае эффективнее.</li>
+        <li><b>Около 4% людей — «музыкально глухие».</b> Это амузия: человек нормально слышит, но не различает высоту и фальшь.</li>
+      </ul>
+    </section>
+
+    <!-- ПЛЕЙЛИСТЫ -->
+    <section>
+      <h2>Четыре плейлиста под разные ситуации</h2>
+      <div class="rule"></div>
+      <p>По одному треку для каждого настроения — с кратким пояснением, когда и почему этот плейлист пригодится.</p>
+
+      <div class="playlists">
+
+        <!-- ПЛЕЙЛИСТ 1 -->
+        <div class="playlist">
+          <h3>Для расслабления</h3>
+          <div class="mood">Покой, тишина</div>
+          <p class="desc">Когда нужно замедлиться, снять напряжение после дня или подготовиться ко сну. Мягкие фортепианные и эмбиент-композиции помогают выдохнуть и переключить внимание с тревог на звук.</p>
+          <ul>
+            <li>Nuvole Bianche<span>Ludovico Einaudi</span></li>
+            <li>Near Light<span>Ólafur Arnalds</span></li>
+            <li>Clair de Lune<span>Claude Debussy</span></li>
+            <li>rises the moon<span>liana flores</span></li>
+            <li>West Coast<span>The Neighbourhood</span></li>
+          </ul>
+        </div>
+
+        <!-- ПЛЕЙЛИСТ 2 -->
+        <div class="playlist">
+          <h3>В поездку</h3>
+          <div class="mood">Дорога, движение</div>
+          <p class="desc">Для путешествий, дороги или смены обстановки. Ритмичные и узнаваемые треки создают ощущение лёгкости и движения, поддерживают настроение в пути и не дают заскучать.</p>
+          <ul>
+            <li>Целовать другого<span>Иван Дорн</span></li>
+            <li>Shake It Off<span>Taylor Swift</span></li>
+            <li>Blinding Lights<span>The Weeknd</span></li>
+            <li>СОЛНЦЕ ВСТАЛО<span>Gera Amen</span></li>
+            <li>Лаэла<span>нервы</span></li>
+          </ul>
+        </div>
+
+        <!-- ПЛЕЙЛИСТ 3 -->
+        <div class="playlist">
+          <h3>Для поднятия настроения</h3>
+          <div class="mood">Энергия, радость</div>
+          <p class="desc">Когда хочется встряхнуться, поднять себе настроение или добавить энергии в обычный день. Знакомые мелодии и танцевальные ритмы работают как быстрый и безопасный «переключатель» эмоций.</p>
+          <ul>
+            <li>Take on Me<span>a-ha</span></li>
+            <li>Shape of You<span>Ed Sheeran</span></li>
+            <li>Money<span>The Drums</span></li>
+            <li>Me Gustas Tu<span>Manu Chao</span></li>
+            <li>Écoute Chérie<span>Vendredi sur mer</span></li>
+          </ul>
+        </div>
+
+        <!-- ПЛЕЙЛИСТ 4 -->
+        <div class="playlist">
+          <h3>Романтика / Загадочные</h3>
+          <div class="mood">Атмосфера, глубина</div>
+          <p class="desc">Для вечеров, размышлений или моментов, когда хочется атмосферы и лёгкой недосказанности. Медленные, меланхоличные и интимные треки создают настроение, в котором есть и нежность, и тайна.</p>
+          <ul>
+            <li>Anything<span>Adrianne Lenker</span></li>
+            <li>Salvatore<span>Lana Del Rey</span></li>
+            <li>Family Line<span>Conan Gray</span></li>
+            <li>Heavenly<span>Cigarettes After Sex</span></li>
+            <li>I was all over her<span>salvia palth</span></li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="author">Проектную работу выполнила Колегина Алиса</div>
+    <div class="meta">9 «Б» класс</div>
+  </div>
+</footer>
+
+</body>
+</html>
